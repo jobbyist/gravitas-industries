@@ -38,7 +38,11 @@ const ProjectCard = ({
   };
 
   return (
-    <Card className="group relative overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-card hover:-translate-y-1">
+    <Card className={`group relative overflow-hidden bg-card border-border transition-all duration-300 hover:-translate-y-1 ${
+      status === "ongoing" 
+        ? "animate-card-glow hover:border-primary/70" 
+        : "hover:border-primary/50 hover:shadow-card"
+    }`}>
       <CardContent className="p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div className="h-16 flex items-center">
