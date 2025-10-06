@@ -8,16 +8,21 @@ import { UserPlus, LogIn } from "lucide-react";
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
 }
 
-const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
+const AuthModal = ({ isOpen, onClose, onSuccess }: AuthModalProps) => {
   const [isSignUp, setIsSignUp] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Implement authentication in Phase 2
     console.log(isSignUp ? "Sign up submitted" : "Login submitted");
-    onClose();
+    if (onSuccess) {
+      onSuccess();
+    } else {
+      onClose();
+    }
   };
 
   return (
