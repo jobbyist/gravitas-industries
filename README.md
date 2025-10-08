@@ -62,12 +62,28 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/ddc3b80c-cf56-41a0-833b-61d372e45390) and click on Share -> Publish.
+This project is configured for **automatic deployment to GitHub Pages** with the custom domain **gravitas.uno**.
 
-## Can I connect a custom domain to my Lovable project?
+### Automatic Deployment
 
-Yes, you can!
+- **Every push to `main`** triggers an automatic deployment via GitHub Actions
+- **Manual deployment** can be triggered from the Actions tab in GitHub
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Deployment Documentation
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+For detailed deployment configuration, DNS setup, and troubleshooting, see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+### Alternative: Deploy via Lovable
+
+You can also deploy using [Lovable](https://lovable.dev/projects/ddc3b80c-cf56-41a0-833b-61d372e45390) by clicking Share -> Publish.
+
+## Custom Domain
+
+This project is configured with the custom domain **gravitas.uno**. 
+
+The domain is configured via:
+- CNAME file in the `public/` directory
+- GitHub Actions workflow for automated deployment
+- DNS records (must be configured at domain registrar)
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete DNS configuration instructions.
