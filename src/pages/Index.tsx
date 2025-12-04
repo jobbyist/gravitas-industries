@@ -5,19 +5,17 @@ import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
 import ContactModal from "@/components/ContactModal";
 import AuthModal from "@/components/AuthModal";
-import ExplorerMenu from "@/components/ExplorerMenu";
 import ValuationTool from "@/components/ValuationTool";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import PartnerLogos from "@/components/PartnerLogos";
 import { projects, Project } from "@/data/projects";
-import { User, Menu } from "lucide-react";
+import { User } from "lucide-react";
 
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [isExplorerOpen, setIsExplorerOpen] = useState(false);
 
   const handleLearnMore = (project: Project) => {
     setSelectedProject(project);
@@ -29,14 +27,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Explorer Menu Link */}
+      {/* Contact Link */}
       <div className="fixed top-6 left-6 z-50">
         <button
-          onClick={() => setIsExplorerOpen(true)}
-          className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-semibold tracking-widest text-sm"
+          onClick={() => setIsContactOpen(true)}
+          className="text-foreground hover:text-primary transition-colors font-semibold tracking-widest text-sm"
         >
-          <Menu className="h-5 w-5" />
-          EXPLORER
+          CONTACT
         </button>
       </div>
 
@@ -149,11 +146,6 @@ const Index = () => {
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
-      />
-
-      <ExplorerMenu
-        isOpen={isExplorerOpen}
-        onClose={() => setIsExplorerOpen(false)}
       />
 
       <AuthModal
