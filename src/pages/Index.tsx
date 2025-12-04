@@ -4,18 +4,14 @@ import Hero from "@/components/Hero";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
 import ContactModal from "@/components/ContactModal";
-import AuthModal from "@/components/AuthModal";
-import ValuationTool from "@/components/ValuationTool";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import PartnerLogos from "@/components/PartnerLogos";
 import { projects, Project } from "@/data/projects";
-import { User } from "lucide-react";
 
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   const handleLearnMore = (project: Project) => {
     setSelectedProject(project);
@@ -34,17 +30,6 @@ const Index = () => {
           className="text-foreground hover:text-primary transition-colors font-semibold tracking-widest text-sm"
         >
           CONTACT
-        </button>
-      </div>
-
-      {/* JOIN NOW Button */}
-      <div className="fixed top-6 right-6 z-50">
-        <button
-          onClick={() => setIsAuthOpen(true)}
-          className="flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground font-semibold tracking-widest text-sm rounded-md hover:bg-primary/90 transition-all animate-pulse-glow"
-        >
-          <User className="h-4 w-4" />
-          JOIN NOW
         </button>
       </div>
 
@@ -118,9 +103,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Digital Asset Valuation Tool Section */}
-      <ValuationTool />
-
       {/* Partner Logos Section */}
       <PartnerLogos />
 
@@ -146,11 +128,6 @@ const Index = () => {
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
-      />
-
-      <AuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setIsAuthOpen(false)}
       />
 
       <ProjectModal
