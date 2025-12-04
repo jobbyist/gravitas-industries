@@ -18,39 +18,10 @@ const Index = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isExplorerOpen, setIsExplorerOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLearnMore = (project: Project) => {
-    if (!isAuthenticated) {
-      setIsAuthOpen(true);
-      setSelectedProject(project);
-    } else {
-      setSelectedProject(project);
-      setIsModalOpen(true);
-    }
-  };
-
-  const handleAddToWatchlist = () => {
-    if (!isAuthenticated) {
-      setIsAuthOpen(true);
-    }
-  };
-
-  const handleAuthSuccess = () => {
-    setIsAuthenticated(true);
-    setIsAuthOpen(false);
-    if (selectedProject) {
-      setIsModalOpen(true);
-    }
-  };
-
-  const handleBackProject = () => {
-    if (!isAuthenticated) {
-      setIsAuthOpen(true);
-    } else {
-      // TODO: Implement back project functionality
-      console.log("Back project functionality");
-    }
+    setSelectedProject(project);
+    setIsModalOpen(true);
   };
 
   const ongoingProjects = projects.filter((p) => p.status === "ongoing");
@@ -80,7 +51,7 @@ const Index = () => {
         </button>
       </div>
 
-      <Hero onBackProject={handleBackProject} />
+      <Hero />
 
       {/* Top Banner Ad */}
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -93,7 +64,7 @@ const Index = () => {
           <div className="lg:col-span-3">
             <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Featured Projects
+            Ongoing Developments
           </h2>
           <p className="text-muted-foreground text-lg">
             Active projects in beta and continuous development
@@ -112,7 +83,6 @@ const Index = () => {
               initialViews={project.initialViews}
               initialLikes={project.initialLikes}
               onLearnMore={() => handleLearnMore(project)}
-              onAddToWatchlist={handleAddToWatchlist}
             />
           ))}
         </div>
@@ -138,7 +108,6 @@ const Index = () => {
                   initialViews={project.initialViews}
                   initialLikes={project.initialLikes}
                   onLearnMore={() => handleLearnMore(project)}
-                  onAddToWatchlist={handleAddToWatchlist}
                 />
               ))}
             </div>
@@ -190,7 +159,6 @@ const Index = () => {
       <AuthModal
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
-        onSuccess={handleAuthSuccess}
       />
 
       <ProjectModal

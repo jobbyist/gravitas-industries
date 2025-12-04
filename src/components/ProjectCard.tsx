@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Eye, Heart, Bookmark } from "lucide-react";
+import { Eye, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +12,6 @@ interface ProjectCardProps {
   initialViews: number;
   initialLikes: number;
   onLearnMore: () => void;
-  onAddToWatchlist?: () => void;
 }
 
 const ProjectCard = ({
@@ -24,11 +23,9 @@ const ProjectCard = ({
   initialViews,
   initialLikes,
   onLearnMore,
-  onAddToWatchlist,
 }: ProjectCardProps) => {
   const [likes, setLikes] = useState(initialLikes);
   const [isLiked, setIsLiked] = useState(false);
-  const [isWatchlisted, setIsWatchlisted] = useState(false);
 
   const handleLike = () => {
     if (isLiked) {
@@ -37,13 +34,6 @@ const ProjectCard = ({
     } else {
       setLikes(likes + 1);
       setIsLiked(true);
-    }
-  };
-
-  const handleWatchlist = () => {
-    setIsWatchlisted(!isWatchlisted);
-    if (onAddToWatchlist) {
-      onAddToWatchlist();
     }
   };
 
@@ -98,16 +88,7 @@ const ProjectCard = ({
           variant="secondary"
           className="w-full font-semibold"
         >
-          Read The Project Brief
-        </Button>
-
-        <Button
-          onClick={handleWatchlist}
-          variant="outline"
-          className="w-full font-semibold"
-        >
-          <Bookmark className={`w-4 h-4 mr-2 ${isWatchlisted ? "fill-current" : ""}`} />
-          {isWatchlisted ? "Added to Watchlist" : "Add To Watchlist"}
+          Learn More
         </Button>
       </CardContent>
     </Card>
